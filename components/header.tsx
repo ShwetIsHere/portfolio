@@ -19,7 +19,7 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex gap-8">
-          {["About", "Projects", "Skills", "Contact"].map((item) => (
+          {["About", "Projects", "Skills", "Education", "Contact"].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -49,7 +49,7 @@ export default function Header() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-card border-b border-border p-4 space-y-3 animate-slideInRight">
-          {["About", "Projects", "Skills", "Contact"].map((item) => (
+          {["About", "Projects", "Skills", "Education", "Contact"].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase()}`}

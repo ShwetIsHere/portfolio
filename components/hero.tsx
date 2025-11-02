@@ -1,7 +1,8 @@
 "use client"
 
-import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail, Phone, User } from "lucide-react"
 import Link from "next/link"
+import TypingEffect from "./typing-effect"
 
 interface HeroProps {
   isLoaded: boolean
@@ -32,7 +33,9 @@ export default function Hero({ isLoaded }: HeroProps) {
                   Shwet{" "}
                   <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Patel</span>
                 </h1>
-                <p className="text-xl md:text-2xl text-primary mt-2">Full Stack Developer</p>
+                <p className="text-xl md:text-2xl text-primary mt-2">
+                  <TypingEffect />
+                </p>
               </div>
 
               <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -96,7 +99,7 @@ export default function Hero({ isLoaded }: HeroProps) {
             <div className="relative w-full h-96 md:h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl backdrop-blur-sm border border-primary/30 animate-glowBorder flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">👨‍💻</div>
+                  <User className="w-24 h-24 mx-auto mb-4 text-primary" />
                   <p className="text-muted-foreground">Your Image Here</p>
                 </div>
               </div>

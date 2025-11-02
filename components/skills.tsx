@@ -1,34 +1,62 @@
+import { Code2, Wrench, BookOpen } from "lucide-react"
+
+const TechCard = ({ name, logo }: { name: string; logo: string }) => {
+  return (
+    <div className="group bg-background border-2 border-border rounded-lg p-4 hover:border-primary/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 flex flex-col items-center gap-3 min-h-[140px] justify-center hover:scale-105">
+      <div className="w-16 h-16 flex items-center justify-center">
+        <img
+          src={logo}
+          alt={name}
+          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+          onError={(e) => {
+            e.currentTarget.src =
+              "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2360a5fa'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='20'%3E?%3C/text%3E%3C/svg%3E"
+          }}
+        />
+      </div>
+      <p className="text-sm font-medium text-center text-muted-foreground group-hover:text-primary transition-colors">
+        {name}
+      </p>
+    </div>
+  )
+}
+
 export default function Skills() {
-  const skillCategories = [
+  const knownLanguages = [
+    { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+    { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
     {
-      title: "Programming Languages",
-      skills: ["C", "Python", "HTML", "CSS", "JavaScript", "Java"],
-      icon: "💻",
+      name: "JavaScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    },
+    { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+  ]
+
+  const tools = [
+    { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    {
+      name: "Microsoft Apps",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+    },
+  ]
+
+  const learning = [
+    {
+      name: "AI/ML",
+      logo: "https://cdn-icons-png.flaticon.com/512/8637/8637099.png",
     },
     {
-      title: "Web & Mobile",
-      skills: ["React", "React Native", "Next.js", "Tailwind CSS"],
-      icon: "📱",
+      name: "Cloud Database",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
     },
+    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
     {
-      title: "Backend & Databases",
-      skills: ["Java Servlet", "Supabase", "MySQL", "API Integration"],
-      icon: "🗄️",
-    },
-    {
-      title: "Tools & Platforms",
-      skills: ["VS Code", "GitHub", "Microsoft Office", "Google Drive"],
-      icon: "🛠️",
-    },
-    {
-      title: "Currently Learning",
-      skills: ["AI/ML", "Cloud Services", "Advanced React", "Mobile Development"],
-      icon: "📚",
-    },
-    {
-      title: "Specialties",
-      skills: ["Full Stack Development", "Machine Learning", "Problem Solving", "UI/UX Implementation"],
-      icon: "⭐",
+      name: "API",
+      logo: "https://cdn-icons-png.flaticon.com/512/2164/2164832.png",
     },
   ]
 
@@ -40,27 +68,61 @@ export default function Skills() {
           <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Expertise</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => (
-            <div
-              key={category.title}
-              className="bg-background border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 animate-fadeIn"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-3xl mb-3">{category.icon}</div>
-              <h3 className="text-xl font-bold text-primary mb-4">{category.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
+        {/* Known Programming Languages */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <Code2 className="text-primary" size={32} />
+            <h3 className="text-2xl font-bold text-primary">Programming Languages</h3>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {knownLanguages.map((tech, index) => (
+              <div
+                key={tech.name}
+                className="animate-fadeIn"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <TechCard name={tech.name} logo={tech.logo} />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Tools */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <Wrench className="text-primary" size={32} />
+            <h3 className="text-2xl font-bold text-primary">Tools I Use</h3>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {tools.map((tech, index) => (
+              <div
+                key={tech.name}
+                className="animate-fadeIn"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <TechCard name={tech.name} logo={tech.logo} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Currently Learning */}
+        <div>
+          <div className="flex items-center gap-3 mb-6">
+            <BookOpen className="text-accent" size={32} />
+            <h3 className="text-2xl font-bold text-accent">Currently Learning</h3>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {learning.map((tech, index) => (
+              <div
+                key={tech.name}
+                className="animate-fadeIn"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <TechCard name={tech.name} logo={tech.logo} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
