@@ -1,6 +1,6 @@
 "use client"
 
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users } from "lucide-react"
 
 const projects = [
   {
@@ -10,7 +10,7 @@ const projects = [
       "Real-time asthma patient tracking and reporting app with weather integration and danger zone detection.",
     tags: ["React Native", "Supabase", "API", "Maps"],
     github: "https://github.com/ShwetIsHere/QAir-Asthma",
-    icon: "🫁",
+    icon: Wind,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const projects = [
       "Smart campus monitoring system using YOLO model for crowd detection, weapon detection, and restricted area alerts.",
     tags: ["Python", "YOLO", "React", "Computer Vision"],
     github: "https://github.com/ShwetIsHere/Campus-AI-Surveillance",
-    icon: "🎥",
+    icon: Camera,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const projects = [
     description: "Comprehensive web application for clinic administration with patient, doctor, and staff management.",
     tags: ["Java Servlet", "JSP", "MySQL", "Modern UI"],
     github: "https://github.com/ShwetIsHere/Clinic-Management-System-Java-Servlet-MySQL",
-    icon: "🏥",
+    icon: Hospital,
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const projects = [
       "Student and teacher management system with leave requests, result portal, and fee payment functionality.",
     tags: ["Java Swing", "MySQL", "Desktop App"],
     github: "https://github.com/ShwetIsHere/University-Management-System-Java-Swing-MySQL",
-    icon: "🎓",
+    icon: GraduationCap,
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const projects = [
       "Banking application with account creation, deposits, withdrawals, and transaction management features.",
     tags: ["Java Swing", "MySQL", "Desktop App"],
     github: "https://github.com/ShwetIsHere/Bank-Management-System-Java-Swing-MySQL",
-    icon: "🏦",
+    icon: Building2,
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const projects = [
       "P2P screen sharing and real-time chat application using socket programming and wireless connectivity.",
     tags: ["Python", "Socket", "Networking"],
     github: "https://github.com/ShwetIsHere/Screen-Share-Python",
-    icon: "🖥️",
+    icon: Monitor,
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const projects = [
       "Mobile app with recipe suggestions based on available ingredients, community features, and a grocery store.",
     tags: ["React Native", "Supabase", "API"],
     github: "https://github.com/ShwetIsHere/MAD",
-    icon: "🍳",
+    icon: ChefHat,
   },
   {
     id: 8,
@@ -72,7 +72,7 @@ const projects = [
       "Community platform for sharing memories, reels, real-time chat, and personal dashboards with followers.",
     tags: ["React Native", "Supabase", "API"],
     github: "https://github.com/ShwetIsHere/CommUnity-MobileApp-ReactNative",
-    icon: "👥",
+    icon: Users,
   },
 ]
 
@@ -86,36 +86,41 @@ export default function Projects() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 animate-fadeIn"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="text-4xl mb-4">{project.icon}</div>
-              <h3 className="text-2xl font-bold mb-2 text-primary group-hover:text-accent transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+          {projects.map((project, index) => {
+            const IconComponent = project.icon
+            return (
+              <div
+                key={project.id}
+                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 animate-fadeIn"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <Github size={20} />
-                View on GitHub
-                <ExternalLink size={16} />
-              </a>
-            </div>
-          ))}
+                <div className="mb-4">
+                  <IconComponent className="w-10 h-10 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-2 text-primary group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                >
+                  <Github size={20} />
+                  View on GitHub
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

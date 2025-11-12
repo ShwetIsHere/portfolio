@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 export default function TypingEffect() {
-  const roles = ["Full Stack Developer", "Machine Learning"]
+  const roles = ["Full Stack Developer", "Machine Learning", "Web Developer"]
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
   const [displayText, setDisplayText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
