@@ -34,7 +34,7 @@ export default function Hero({ isLoaded }: HeroProps) {
                   <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Patel</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-primary mt-2">
-                  <TypingEffect />
+                  <TypingEffect/>
                 </p>
               </div>
 
@@ -94,15 +94,17 @@ export default function Hero({ isLoaded }: HeroProps) {
             </div>
           </div>
 
-          {/* Profile Image Placeholder */}
+          {/* Profile Image */}
           <div className={`animate-slideInRight ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-            <div className="relative w-full h-96 md:h-full">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl backdrop-blur-sm border border-primary/30 animate-glowBorder flex items-center justify-center">
-                <div className="text-center">
-                  <User className="w-24 h-24 mx-auto mb-4 text-primary" />
-                  <p className="text-muted-foreground">Your Image Here</p>
-                </div>
-              </div>
+            <div className="relative w-full flex items-center justify-center">
+              <img
+                // src="/Profile-Final-Side.png"
+                // src="/Profile-Final-Front-Crop.png"
+                src="/Front-2.png"
+                alt="Shwet Patel"
+                className="w-full max-w-[500px] md:max-w-[600px] h-auto object-contain"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
             </div>
           </div>
         </div>

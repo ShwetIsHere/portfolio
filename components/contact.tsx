@@ -201,10 +201,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      <footer className="border-t border-border mt-16 pt-8 text-center text-muted-foreground">
-        <p>© 2025 Shwet Patel. Built with Next.js and Tailwind CSS.</p>
-      </footer>
     </section>
   )
 }

@@ -37,7 +37,6 @@ export default function Skills() {
   const tools = [
     { name: "VS Code", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
     { name: "Git/GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     {
       name: "Microsoft Apps",
       logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
@@ -45,6 +44,7 @@ export default function Skills() {
   ]
 
   const learning = [
+    { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     {
       name: "AI/ML",
       logo: "https://cdn-icons-png.flaticon.com/512/8637/8637099.png",

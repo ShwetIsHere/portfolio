@@ -8,16 +8,11 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Shwet Patel - Full Stack Developer",
+  title: "Shwet Patel - Portfolio",
   description: "Full stack developer portfolio with expertise in React Native, Python, Java, and cloud technologies",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👨‍💻</text></svg>",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/Front-2.png",
   },
 }
 

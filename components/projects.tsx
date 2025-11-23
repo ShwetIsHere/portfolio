@@ -62,7 +62,7 @@ const projects = [
     description:
       "Mobile app with recipe suggestions based on available ingredients, community features, and a grocery store.",
     tags: ["React Native", "Supabase", "API"],
-    github: "https://github.com/ShwetIsHere/MAD",
+    github: "https://github.com/ShwetIsHere/SnackIt-MobileApp-ReactNative",
     icon: ChefHat,
   },
   {
@@ -97,7 +97,7 @@ export default function Projects() {
                 <div className="mb-4">
                   <IconComponent className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-primary group-hover:text-accent transition-colors">
+                <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>

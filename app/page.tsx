@@ -9,6 +9,7 @@ import Skills from "@/components/skills"
 import Education from "@/components/education"
 import Contact from "@/components/contact"
 import CustomCursor from "@/components/custom-cursor"
+import Footer from "@/components/footer"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -29,6 +30,7 @@ export default function Home() {
         <Education />
         <Contact />
       </main>
+      <Footer />
     </>
   )
 }
