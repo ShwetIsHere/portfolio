@@ -98,7 +98,7 @@ export default function Hero({ isLoaded }: HeroProps) {
           <div className={`animate-slideInRight ${isLoaded ? "opacity-100" : "opacity-0"}`}>
             <div className="relative w-full flex items-center justify-center">
               <img
-                src="/Front-2.png"
+                src="/Front-2.PNG"
                 alt="Shwet Patel"
                 className="w-full max-w-[500px] md:max-w-[600px] h-auto object-contain"
               />
