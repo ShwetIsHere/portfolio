@@ -100,7 +100,7 @@ export default function Hero({ isLoaded }: HeroProps) {
               <img
                 // src="/Profile-Final-Side.png"
                 // src="/Profile-Final-Front-Crop.png"
-                src="/Front-2.png"
+                src="/Front-2.PNG"
                 alt="Shwet Patel"
                 className="w-full max-w-[500px] md:max-w-[600px] h-auto object-contain"
               />
