@@ -32,7 +32,7 @@ export default function Header() {
 
         {/* Resume Button */}
         <a
-          href="https://drive.google.com/file/d/1JaEP8TLqYZ6HaUyLh1FuTdgWJkM25fO7/view?usp=sharing"
+          href="https://drive.google.com/file/d/1-MCamul87HgYNjvvWgwpbvy-84nPo7eb/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:block px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
