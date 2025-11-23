@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Full stack developer portfolio with expertise in React Native, Python, Java, and cloud technologies",
   generator: "v0.app",
   icons: {
-    icon: "/Front-2.png",
+    icon: "../public/Front-2.png",
   },
 }
 
