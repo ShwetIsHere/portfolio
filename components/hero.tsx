@@ -51,9 +51,8 @@ export default function Hero({ isLoaded }: HeroProps) {
                   View My Work <ArrowRight size={18} />
                 </Link>
                 <a
-                  href="https://drive.google.com/file/d/1JaEP8TLqYZ6HaUyLh1FuTdgWJkM25fO7/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/Shwet_Patel_Resume.pdf"
+                  download="Shwet_Patel_Resume.pdf"
                   className="px-8 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 font-medium transition-colors"
                 >
                   Download Resume
