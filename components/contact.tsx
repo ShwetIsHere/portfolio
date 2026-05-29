@@ -53,18 +53,6 @@ export default function Contact() {
 
             <div className="flex gap-4 items-start">
               <div className="p-3 rounded-lg bg-primary/10 text-primary mt-1">
-                <Phone size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-1">Phone</h3>
-                <a href="tel:+919429112912" className="text-muted-foreground hover:text-primary transition-colors">
-                  +91 9429112912
-                </a>
-              </div>
-            </div>
-
-            <div className="flex gap-4 items-start">
-              <div className="p-3 rounded-lg bg-primary/10 text-primary mt-1">
                 <MapPin size={24} />
               </div>
               <div>
@@ -89,7 +77,7 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-
+            
             <div className="flex gap-4 items-start">
               <div className="p-3 rounded-lg bg-primary/10 text-primary mt-1">
                 <Github size={24} />

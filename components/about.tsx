@@ -11,13 +11,13 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4 md:col-span-2 animate-slideInLeft">
             <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-              I am passionate about full-stack development and machine learning, with a strong focus on solving real-life problems through innovative technology solutions. With expertise in building scalable applications using modern web technologies, I have developed a strong foundation in React, React Native, Python, and Java, creating solutions that bridge the gap between design and functionality.
+              I am an AI/ML Engineering student passionate about building practical technology solutions that solve real-world problems. My work focuses on computer vision, intelligent automation, IoT-integrated healthcare systems, and full-stack application development. I have hands-on experience with Python, OpenCV, React Native, Flask, Supabase, MySQL, and cloud-based tools, which helps me create scalable and useful applications.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-              My journey in tech has taken me through multiple domains - from mobile app development with React Native to AI-powered surveillance systems using YOLO models, from comprehensive clinic management systems to community-driven social platforms. I believe in writing clean, maintainable code and creating user-friendly interfaces that make complex systems accessible to everyone.
+              My journey in technology includes developing projects such as QAir-Asthma, a smart healthcare mobile application for real-time inhaler usage monitoring; Campus AI Surveillance, an AI-powered system for detecting crowd gatherings, fights, weapons, and unauthorized access; and SnackIt, a community-driven recipe-sharing mobile platform with AI-based ingredient recommendations. These projects have helped me explore multiple domains, including mobile app development, AI surveillance, healthcare technology, and community-based platforms.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed text-justify">
-              Currently pursuing my Bachelor of Technology in Computer Science at Navrachna University, Vadodara, I am continuously expanding my knowledge in AI/ML, cloud database services, and modern frameworks. I am always eager to learn new technologies and take on challenging projects that push the boundaries of what's possible with code.
+              Currently, I am pursuing my Bachelor of Technology in Computer Science at Navrachna University, Vadodara. I am continuously improving my skills in AI/ML, computer vision, full-stack development, cloud tools, and database systems. I enjoy learning new technologies, participating in hackathons, and working on challenging projects that allow me to combine creativity, problem-solving, and code to build meaningful digital solutions.
             </p>
           </div>
 
@@ -42,10 +42,6 @@ export default function About() {
                 <li className="flex items-center gap-2">
                   <Mail size={16} />
                   shwetmanojbhai@gmail.com
-                </li>
-                <li className="flex items-center gap-2">
-                  <Phone size={16} />
-                  +91 9429112912
                 </li>
                 <li className="flex items-center gap-2">
                   <Linkedin size={16} />

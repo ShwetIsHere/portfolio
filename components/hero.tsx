@@ -39,8 +39,7 @@ export default function Hero({ isLoaded }: HeroProps) {
               </div>
 
               <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                Passionate about full-stack development and machine learning. Focused on solving real-life problems
-                through innovative technology solutions.
+                Passionate AI/ML and full-stack developer with hands-on experience in computer vision, intelligent automation, IoT-based healthcare, and mobile application development. I focus on building scalable, real-world technology solutions using AI, Python, React Native, Flask, and modern cloud tools.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -82,12 +81,6 @@ export default function Hero({ isLoaded }: HeroProps) {
                   className="p-3 rounded-lg bg-card hover:bg-primary/10 text-primary transition-colors"
                 >
                   <Mail size={24} />
-                </a>
-                <a
-                  href="tel:+919429112912"
-                  className="p-3 rounded-lg bg-card hover:bg-primary/10 text-primary transition-colors"
-                >
-                  <Phone size={24} />
                 </a>
               </div>
             </div>

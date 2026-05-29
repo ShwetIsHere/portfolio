@@ -1,6 +1,9 @@
 "use client"
 
+import { useMemo, useState } from "react"
 import { ExternalLink, Github, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
 
 const projects = [
   {
@@ -17,47 +20,12 @@ const projects = [
     title: "Campus AI Surveillance",
     description:
       "Smart campus monitoring system using YOLO model for crowd detection, weapon detection, and restricted area alerts.",
-    tags: ["Python", "YOLO", "React", "Computer Vision"],
-    github: "https://github.com/ShwetIsHere/Campus-AI-Surveillance",
+    tags: ["Python", "YOLO", "Computer Vision","Hadoop", "Spark", "Kafka"],
+    github: "https://github.com/ShwetIsHere/Studio",
     icon: Camera,
   },
   {
     id: 3,
-    title: "Clinic Management System",
-    description: "Comprehensive web application for clinic administration with patient, doctor, and staff management.",
-    tags: ["Java Servlet", "JSP", "MySQL", "Modern UI"],
-    github: "https://github.com/ShwetIsHere/Clinic-Management-System-Java-Servlet-MySQL",
-    icon: Hospital,
-  },
-  {
-    id: 4,
-    title: "University Management System",
-    description:
-      "Student and teacher management system with leave requests, result portal, and fee payment functionality.",
-    tags: ["Java Swing", "MySQL", "Desktop App"],
-    github: "https://github.com/ShwetIsHere/University-Management-System-Java-Swing-MySQL",
-    icon: GraduationCap,
-  },
-  {
-    id: 5,
-    title: "Bank Management System",
-    description:
-      "Banking application with account creation, deposits, withdrawals, and transaction management features.",
-    tags: ["Java Swing", "MySQL", "Desktop App"],
-    github: "https://github.com/ShwetIsHere/Bank-Management-System-Java-Swing-MySQL",
-    icon: Building2,
-  },
-  {
-    id: 6,
-    title: "Screen Share Application",
-    description:
-      "P2P screen sharing and real-time chat application using socket programming and wireless connectivity.",
-    tags: ["Python", "Socket", "Networking"],
-    github: "https://github.com/ShwetIsHere/Screen-Share-Python",
-    icon: Monitor,
-  },
-  {
-    id: 7,
     title: "SnakIt - Recipe App",
     description:
       "Mobile app with recipe suggestions based on available ingredients, community features, and a grocery store.",
@@ -66,7 +34,7 @@ const projects = [
     icon: ChefHat,
   },
   {
-    id: 8,
+    id: 4,
     title: "CommUnity - Social App",
     description:
       "Community platform for sharing memories, reels, real-time chat, and personal dashboards with followers.",
@@ -74,9 +42,50 @@ const projects = [
     github: "https://github.com/ShwetIsHere/CommUnity-MobileApp-ReactNative",
     icon: Users,
   },
+  {
+    id: 5,
+    title: "Clinic Management System",
+    description: "Comprehensive web application for clinic administration with patient, doctor, and staff management.",
+    tags: ["Java Servlet", "JSP", "MySQL", "Modern UI"],
+    github: "https://github.com/ShwetIsHere/Clinic-Management-System-Java-Servlet-MySQL",
+    icon: Hospital,
+  },
+  {
+    id: 6,
+    title: "University Management System",
+    description:
+      "Student and teacher management system with leave requests, result portal, and fee payment functionality.",
+    tags: ["Java Swing", "MySQL", "Desktop App"],
+    github: "https://github.com/ShwetIsHere/University-Management-System-Java-Swing-MySQL",
+    icon: GraduationCap,
+  },
+  {
+    id: 7,
+    title: "Bank Management System",
+    description:
+      "Banking application with account creation, deposits, withdrawals, and transaction management features.",
+    tags: ["Java Swing", "MySQL", "Desktop App"],
+    github: "https://github.com/ShwetIsHere/Bank-Management-System-Java-Swing-MySQL",
+    icon: Building2,
+  },
+  {
+    id: 8,
+    title: "Screen Share Application",
+    description:
+      "P2P screen sharing and real-time chat application using socket programming and wireless connectivity.",
+    tags: ["Python", "Socket", "Networking"],
+    github: "https://github.com/ShwetIsHere/Screen-Share-Python",
+    icon: Monitor,
+  }
 ]
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleProjects = useMemo(() => {
+    return showAll ? projects : projects.slice(0, 4)
+  }, [showAll])
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -86,7 +95,7 @@ export default function Projects() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project, index) => {
+          {visibleProjects.map((project, index) => {
             const IconComponent = project.icon
             return (
               <div
@@ -122,6 +131,17 @@ export default function Projects() {
             )
           })}
         </div>
+
+        {projects.length > 4 && (
+          <div className="mt-10 flex justify-center">
+            <Button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="px-8 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+            >
+              {showAll ? "Show Less" : "Load More"}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )
