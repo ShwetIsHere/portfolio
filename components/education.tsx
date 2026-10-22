@@ -84,7 +84,7 @@ export default function Education() {
                             <span>{edu.year}</span>
                           </span>
                           {edu.status === "completed" && (
-                            <span className="text-xs md:text-sm lg:text-base font-medium text-green-400 bg-green-400/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-2">
+                            <span className="text-xs md:text-sm lg:text-base font-medium text-emerald-600 dark:text-green-400 bg-emerald-500/10 px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-2">
                               <CheckCircle className="w-3 h-3 md:w-4 md:h-4" />
                               Completed
                             </span>

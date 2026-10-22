@@ -4,43 +4,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Modern tech portfolio color scheme - dark navy with cyan accents */
-  --background: oklch(0.08 0 0);
-  --foreground: oklch(0.95 0 0);
-  --card: oklch(0.12 0 0);
-  --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
-  --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.6 0.15 185);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.25 0 0);
-  --secondary-foreground: oklch(0.95 0 0);
-  --muted: oklch(0.35 0 0);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.7 0.2 260);
-  --accent-foreground: oklch(0.08 0 0);
+  /* Light theme - clean slate with ocean cyan/teal primary */
+  --background: oklch(0.985 0.005 240);
+  --foreground: oklch(0.18 0.02 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 240);
+  --primary: oklch(0.5 0.17 210);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.01 220);
+  --secondary-foreground: oklch(0.2 0.02 240);
+  --muted: oklch(0.94 0.01 220);
+  --muted-foreground: oklch(0.46 0.02 240);
+  --accent: oklch(0.55 0.22 265);
+  --accent-foreground: oklch(0.99 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.6 0.15 185);
-  --chart-1: oklch(0.6 0.15 185);
-  --chart-2: oklch(0.7 0.2 260);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.01 220);
+  --input: oklch(0.88 0.01 220);
+  --ring: oklch(0.5 0.17 210);
+  --chart-1: oklch(0.5 0.17 210);
+  --chart-2: oklch(0.55 0.22 265);
   --chart-3: oklch(0.5 0.12 150);
   --chart-4: oklch(0.65 0.18 200);
   --chart-5: oklch(0.55 0.15 180);
   --radius: 0.625rem;
-  --sidebar: oklch(0.12 0 0);
-  --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.6 0.15 185);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.25 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.6 0.15 185);
+  --sidebar: oklch(0.97 0.005 240);
+  --sidebar-foreground: oklch(0.18 0.02 240);
+  --sidebar-primary: oklch(0.5 0.17 210);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.01 220);
+  --sidebar-accent-foreground: oklch(0.18 0.02 240);
+  --sidebar-border: oklch(0.88 0.01 220);
+  --sidebar-ring: oklch(0.5 0.17 210);
 }
 
 .dark {
+  /* Dark theme - modern dark navy with cyan accents */
   --background: oklch(0.08 0 0);
   --foreground: oklch(0.95 0 0);
   --card: oklch(0.12 0 0);
@@ -146,16 +147,16 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: oklch(0.08 0 0);
+  background: var(--background);
 }
 
 body::-webkit-scrollbar-thumb {
-  background: oklch(0.6 0.15 185);
+  background: var(--primary);
   border-radius: 4px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.7 0.2 260);
+  background: var(--accent);
 }
 
 /* Keyframe animations for portfolio */
