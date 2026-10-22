@@ -1,13 +1,41 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { ExternalLink, Github, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users } from "lucide-react"
+import { ExternalLink, Github, Globe, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users, ScanFace, Plane, Bot } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
 const projects = [
   {
     id: 1,
+    title: "Future-Face",
+    description:
+      "Developed an AI-powered age estimation and facial age transformation system that predicts age and generates future facial appearances.",
+    tags: ["Python", "PyTorch", "Torchvision", "ResNet-50", "Yu-Net", "Computer Vision"],
+    github: "https://github.com/ShwetIsHere/Future-Face",
+    icon: ScanFace,
+  },
+  {
+    id: 2,
+    title: "Triply - Multi Agent Trip Planner",
+    description:
+      "Autonomous multi-agent travel planner built using LangGraph, FastAPI, and MCP, coordinating specialized LLMs to generate real-time flight, hotel, and weather itineraries.",
+    tags: ["Python", "MCP", "API", "AI Agents", "LangGraph", "LangSmith", "LLMs"],
+    github: "https://github.com/ShwetIsHere/Triply-Travel-Agent-LangGraph-MCP",
+    live: "https://travel.heyshwet.me/",
+    icon: Plane,
+  },
+  {
+    id: 3,
+    title: "Agentic Project Manager",
+    description:
+      "Built a multi-agent AI project management system automating client communication, resource allocation, budgeting, scheduling, risk prediction, and quality assurance.",
+    tags: ["Python", "LangChain", "Supabase", "LLMs", "API", "AI Agents"],
+    github: "https://github.com/ShwetIsHere/Project-Management-AI",
+    icon: Bot,
+  },
+  {
+    id: 4,
     title: "QAir - Asthma Tracker",
     description:
       "Real-time asthma patient tracking and reporting app with weather integration and danger zone detection.",
@@ -16,16 +44,16 @@ const projects = [
     icon: Wind,
   },
   {
-    id: 2,
+    id: 5,
     title: "Campus AI Surveillance",
     description:
       "Smart campus monitoring system using YOLO model for crowd detection, weapon detection, and restricted area alerts.",
-    tags: ["Python", "YOLO", "Computer Vision","Hadoop", "Spark", "Kafka"],
+    tags: ["Python", "YOLO", "Computer Vision", "Hadoop", "Spark", "Kafka"],
     github: "https://github.com/ShwetIsHere/Studio",
     icon: Camera,
   },
   {
-    id: 3,
+    id: 6,
     title: "SnakIt - Recipe App",
     description:
       "Mobile app with recipe suggestions based on available ingredients, community features, and a grocery store.",
@@ -34,7 +62,7 @@ const projects = [
     icon: ChefHat,
   },
   {
-    id: 4,
+    id: 7,
     title: "CommUnity - Social App",
     description:
       "Community platform for sharing memories, reels, real-time chat, and personal dashboards with followers.",
@@ -43,7 +71,7 @@ const projects = [
     icon: Users,
   },
   {
-    id: 5,
+    id: 8,
     title: "Clinic Management System",
     description: "Comprehensive web application for clinic administration with patient, doctor, and staff management.",
     tags: ["Java Servlet", "JSP", "MySQL", "Modern UI"],
@@ -51,7 +79,7 @@ const projects = [
     icon: Hospital,
   },
   {
-    id: 6,
+    id: 9,
     title: "University Management System",
     description:
       "Student and teacher management system with leave requests, result portal, and fee payment functionality.",
@@ -60,7 +88,7 @@ const projects = [
     icon: GraduationCap,
   },
   {
-    id: 7,
+    id: 10,
     title: "Bank Management System",
     description:
       "Banking application with account creation, deposits, withdrawals, and transaction management features.",
@@ -69,7 +97,7 @@ const projects = [
     icon: Building2,
   },
   {
-    id: 8,
+    id: 11,
     title: "Screen Share Application",
     description:
       "P2P screen sharing and real-time chat application using socket programming and wireless connectivity.",
@@ -117,16 +145,30 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
-                >
-                  <Github size={20} />
-                  View on GitHub
-                  <ExternalLink size={16} />
-                </a>
+                <div className="flex flex-wrap items-center gap-4">
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                    >
+                      <Globe size={18} />
+                      Live Demo
+                      <ExternalLink size={16} />
+                    </a>
+                  )}
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    <Github size={18} />
+                    View on GitHub
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
               </div>
             )
           })}
