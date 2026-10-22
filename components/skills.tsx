@@ -2,7 +2,7 @@ import { Code2, Wrench, BookOpen } from "lucide-react"
 
 const TechCard = ({ name, logo }: { name: string; logo: string }) => {
   return (
-    <div className="group bg-background border-2 border-border rounded-lg p-4 hover:border-primary/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 flex flex-col items-center gap-3 min-h-[140px] justify-center hover:scale-105">
+    <div className="group bg-card border-2 border-border rounded-lg p-4 hover:border-primary/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 flex flex-col items-center gap-3 min-h-[140px] justify-center hover:scale-105">
       <div className="w-16 h-16 flex items-center justify-center">
         <img
           src={logo}
@@ -25,8 +25,6 @@ export default function Skills() {
   const knownLanguages = [
     { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
     { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-    { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-    { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
     {
       name: "JavaScript",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -41,6 +39,14 @@ export default function Skills() {
       name: "Microsoft Apps",
       logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
     },
+    {
+      name: "DBMS",
+      logo: "https://cdn-icons-png.flaticon.com/512/2772/2772128.png",
+    },
+    {
+      name: "AI Libraries",
+      logo: "https://cdn-icons-png.flaticon.com/512/2103/2103832.png",
+    },
   ]
 
   const learning = [
@@ -53,8 +59,10 @@ export default function Skills() {
       name: "Cloud Database",
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
     },
-    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-    { name: "React Native", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    {
+      name: "Cloud Service",
+      logo: "https://cdn-icons-png.flaticon.com/512/4115/4115745.png",
+    },
     {
       name: "API",
       logo: "https://cdn-icons-png.flaticon.com/512/2164/2164832.png",
@@ -75,7 +83,7 @@ export default function Skills() {
             <Code2 className="text-primary" size={32} />
             <h3 className="text-2xl font-bold text-primary">Programming Languages</h3>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {knownLanguages.map((tech, index) => (
               <div
                 key={tech.name}
@@ -94,7 +102,7 @@ export default function Skills() {
             <Wrench className="text-primary" size={32} />
             <h3 className="text-2xl font-bold text-primary">Tools I Use</h3>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {tools.map((tech, index) => (
               <div
                 key={tech.name}
@@ -113,7 +121,7 @@ export default function Skills() {
             <BookOpen className="text-accent" size={32} />
             <h3 className="text-2xl font-bold text-accent">Currently Learning</h3>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {learning.map((tech, index) => (
               <div
                 key={tech.name}
