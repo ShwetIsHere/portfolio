@@ -28,6 +28,18 @@ import {
   Globe,
   Compass,
   MessageSquare,
+  Users,
+  DollarSign,
+  Clock,
+  ShieldAlert,
+  BarChart3,
+  Bot,
+  Database,
+  LayoutGrid,
+  Target,
+  ShieldCheck,
+  CheckSquare,
+  GitBranch,
   type LucideIcon,
 } from "lucide-react"
 
@@ -54,6 +66,10 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
   const isFutureFace = project.title === "Future-Face" || project.id === 1
   const isTriply = project.title.toLowerCase().includes("triply") || project.id === 2
+  const isPM =
+    project.title.toLowerCase().includes("project manager") ||
+    project.title.toLowerCase().includes("project-management") ||
+    project.id === 3
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -617,9 +633,474 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
           )}
 
           {/* ===================================================================== */}
-          {/* 3. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* 3. AGENTIC PROJECT MANAGER CASE STUDY                                 */}
           {/* ===================================================================== */}
-          {!isFutureFace && !isTriply && (
+          {isPM && (
+            <>
+              {/* 1. Hero Architecture Banner: agent_workflow.png */}
+              <div className="space-y-3">
+                <div className="overflow-hidden rounded-xl border border-border bg-card shadow-md">
+                  <img
+                    src="/projects/pm/agent_workflow.png"
+                    alt="Autonomous Multi-Agent AI System Architecture Workflow"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground text-center italic">
+                  Autonomous Multi-Agent AI System Architecture: Collaborative reasoning, real-time orchestration & lifecycle execution managed by the Decision Agent over Supabase.
+                </p>
+              </div>
+
+              {/* 2. What is this project? */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border/80">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Bot className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    1. What is this project?
+                  </h3>
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p>
+                    The <strong className="text-foreground">Agentic AI Project Management System</strong> is a multi-agent AI platform designed to manage software development projects from initial client communication to final delivery.
+                  </p>
+                  <p>
+                    It uses <strong className="text-foreground">nine specialized AI agents</strong> coordinated by a central <strong>Decision Agent</strong> to handle project planning, employee allocation, budget management, scheduling, risk prediction, quality assurance, and documentation.
+                  </p>
+                  <p>
+                    Clients can communicate with the system through a <strong>ChatGPT-like conversational interface</strong> to request new features, ask about project progress, discuss budgets, and modify requirements. The system evaluates the impact of these requests, coordinates the relevant agents, updates project information in Supabase, and communicates the results back to the client.
+                  </p>
+                  <p>
+                    The platform also integrates directly with <strong className="text-foreground">GitHub</strong> to access project repositories and allows the Quality Assurance Agent to test code and identify potential bugs.
+                  </p>
+                </div>
+              </section>
+
+              {/* 3. Why this project? */}
+              <section className="space-y-5 rounded-xl p-5 sm:p-6 bg-card border border-border/80">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Target className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    2. Why this project?
+                  </h3>
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p>
+                    Traditional project management often requires significant manual coordination between clients, project managers, developers, finance teams, and quality assurance teams. When a client requests a new feature during development, it can affect the budget, deadline, resource allocation, and existing tasks.
+                  </p>
+                  <p className="p-3.5 rounded-lg bg-primary/5 border-l-4 border-primary text-foreground/90 font-medium">
+                    This project aims to automate and coordinate these critical activities using Agentic AI.
+                  </p>
+                </div>
+
+                <div className="space-y-2 pt-2">
+                  <div className="text-sm font-bold text-foreground uppercase tracking-wider">
+                    Core Objectives:
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <CheckSquare size={16} />
+                        Automated Project Management
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Coordinate planning, task tracking, milestones, and progress continuously.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <MessageSquare size={16} />
+                        Intelligent Client Communication
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Understand client requests and provide project updates through natural dialogue.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <Users size={16} />
+                        Dynamic Resource Allocation
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Assign available employees according to skills, workload, and real-time availability.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <DollarSign size={16} />
+                        Budget & Timeline Management
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Evaluate the financial and scheduling impact of changing client requirements.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <ShieldAlert size={16} />
+                        Proactive Risk Prediction
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Identify potential delivery delays, budget overruns, and resource shortages early.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <ShieldCheck size={16} />
+                        Automated Quality Assurance
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Inspect GitHub repositories, execute isolated tests, and pinpoint defects.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <Clock size={16} />
+                        Transparent Project Tracking
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Maintain an immutable audit trail of client requests, agent steps, and expenses.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1">
+                      <div className="font-semibold text-sm text-primary flex items-center gap-2">
+                        <Database size={16} />
+                        Centralized Information Store
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Use Supabase to store project data and ensure consistent state across the ecosystem.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground italic pt-1">
+                  Ultimately, the goal is to build an intelligent project management platform that reduces manual toil, improves cross-team alignment, and enables faster, more informed decisions.
+                </p>
+              </section>
+
+              {/* 4. The Nine AI Agents */}
+              <section className="space-y-6">
+                <div className="flex items-center gap-2.5 text-primary pb-2 border-b border-border">
+                  <Layers className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    3. The Nine AI Agents and Their Responsibilities
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  The system consists of <strong>nine specialized agents</strong>, including the <strong>Decision Agent</strong>, which coordinates the other eight agents around a reactive state bus:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Agent 1 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border-2 border-primary/40 space-y-2 md:col-span-2 bg-gradient-to-r from-primary/10 via-background to-transparent shadow-sm">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-base">
+                      <div className="p-2 rounded-lg bg-primary text-primary-foreground">
+                        <BrainCircuit size={18} />
+                      </div>
+                      1. Decision Agent (Central Orchestrator / Boss Agent)
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Acts as the central cognitive engine or "boss agent." It parses intent, decomposes requests into sub-tasks, determines which agents need to be invoked, routes execution paths, evaluates consensus, and commits final decisions to Supabase.
+                    </p>
+                  </div>
+
+                  {/* Agent 2 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+                        <MessageSquare size={18} />
+                      </div>
+                      2. Communication Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Communicates with clients in real-time through natural dialogue. Understands requirements, answers status questions, processes feature requests, and requests sign-offs for budget/timeline modifications.
+                    </p>
+                  </div>
+
+                  {/* Agent 3 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                        <CheckSquare size={18} />
+                      </div>
+                      3. Project Management Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Manages project tasks, milestones, deadlines, dependencies, features, and overall completion percentages. Automatically updates sprint planning and work breakdown structures when scope shifts.
+                    </p>
+                  </div>
+
+                  {/* Agent 4 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+                        <Users size={18} />
+                      </div>
+                      4. Resource Management Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Evaluates developer skills, current availability, and workload capacity. Matches sub-tasks with ideal developers, sets real-time status (`FREE` vs `ALLOCATED`) in Supabase, and balances workloads to avoid burnout.
+                    </p>
+                  </div>
+
+                  {/* Agent 5 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-rose-500/10 text-rose-500">
+                        <ShieldAlert size={18} />
+                      </div>
+                      5. Risk Prediction Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Evaluates potential project risks across schedule, budget caps, and development bottlenecks. Scores risk as LOW, MEDIUM, HIGH, or CRITICAL, providing proactive mitigation strategies and fallback plans.
+                    </p>
+                  </div>
+
+                  {/* Agent 6 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-teal-500/10 text-teal-500">
+                        <DollarSign size={18} />
+                      </div>
+                      6. Budget Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Calculates costs per feature and sub-task. Allocates budgets across engineering, databases, cloud hosting, third-party APIs, and testing while enforcing organizational commission locks and expenditure thresholds.
+                    </p>
+                  </div>
+
+                  {/* Agent 7 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+                        <Clock size={18} />
+                      </div>
+                      7. Timeline Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Creates and recalculates task schedules, sequential durations, critical paths, and hard deadlines. Evaluates parallel track feasibility whenever tasks are delayed, modified, or added.
+                    </p>
+                  </div>
+
+                  {/* Agent 8 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
+                        <BarChart3 size={18} />
+                      </div>
+                      8. Analytics Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Maintains comprehensive technical project documentation and generates executive reports on completed deliverables, client requests, budget burn rates, developer allocations, and audit histories.
+                    </p>
+                  </div>
+
+                  {/* Agent 9 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold text-sm sm:text-base">
+                      <div className="p-2 rounded-lg bg-violet-500/10 text-violet-500">
+                        <GitBranch size={18} />
+                      </div>
+                      9. Quality Assurance Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Accesses authorized GitHub repositories, instantiates isolated test environments, generates test cases, analyzes failures, identifies bugs, and submits formal QA reports. Triggers task reassignment if defects are detected.
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground italic">
+                  Note: There are nine agents in total. The Timeline Agent manages dynamic scheduling, while the Analytics Agent handles metrics, documentation, and reporting.
+                </p>
+              </section>
+
+              {/* 5. Database: Supabase */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary font-bold text-lg">
+                  <Database className="w-5 h-5" />
+                  4. Database: Supabase (Relational Source of Truth)
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  The project uses <strong className="text-foreground">Supabase</strong> as its central PostgreSQL database and reactive event backend, persisting:
+                </p>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Project details, client data & project status
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Employee profiles, skills & workload allocations
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Tasks, milestones, deadlines & dependencies
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Budgets, service allocations & operational expenses
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Features, risk evaluations & GitHub QA test logs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    Client chat history, audit logs & generated reports
+                  </li>
+                </ul>
+
+                <div className="space-y-3 pt-3">
+                  <div className="text-sm font-semibold text-foreground">
+                    State Synchronization & Allocation Lifecycle:
+                  </div>
+                  <div className="overflow-x-auto rounded-xl border border-border">
+                    <table className="w-full text-left text-xs sm:text-sm">
+                      <thead className="bg-muted/70 text-foreground font-semibold border-b border-border">
+                        <tr>
+                          <th className="p-3">Event Trigger</th>
+                          <th className="p-3">Employee Status in Supabase</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border text-muted-foreground">
+                        <tr className="hover:bg-muted/20">
+                          <td className="p-3">Employee is available</td>
+                          <td className="p-3">
+                            <span className="px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                              FREE
+                            </span>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-muted/20">
+                          <td className="p-3">Employee is assigned a task</td>
+                          <td className="p-3">
+                            <span className="px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                              ALLOCATED
+                            </span>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-muted/20">
+                          <td className="p-3">Employee completes the task</td>
+                          <td className="p-3">
+                            <span className="px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                              FREE
+                            </span>
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-muted/20">
+                          <td className="p-3">Task is blocked or reassigned</td>
+                          <td className="p-3">
+                            Update allocation according to the actual assignment
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="pt-1 text-xs text-muted-foreground flex items-center gap-1.5">
+                  <span>Official Reference:</span>
+                  <a
+                    href="https://supabase.com/docs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline inline-flex items-center gap-1"
+                  >
+                    Supabase Documentation
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
+              </section>
+
+              {/* 6. User Interface */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary font-bold text-lg">
+                  <LayoutGrid className="w-5 h-5" />
+                  5. User Interface (ChatGPT-Inspired 3-Panel Layout)
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  The platform utilizes a structured 3-panel layout designed for maximum operational visibility and seamless client interaction:
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-primary uppercase tracking-wider">Left Panel</div>
+                    <div className="font-semibold text-sm text-foreground">Ongoing Projects</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Displays active projects, completion progress bars, and operational status. Selecting a project opens its full management workspace.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-accent uppercase tracking-wider">Middle Panel</div>
+                    <div className="font-semibold text-sm text-foreground">Project Dashboard</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Shows project telemetry: active features, task kanban, milestones, budget allocation, Gantt timeline, staff allocations, and live agent events.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-emerald-500 uppercase tracking-wider">Right Panel</div>
+                    <div className="font-semibold text-sm text-foreground">Communication Agent</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Conversational chat UI where clients request features, ask questions, approve budget proposals, and receive automated progress debriefs.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 7. Expected Outcome */}
+              <section className="space-y-3 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary font-bold text-lg">
+                  <Sparkles className="w-5 h-5" />
+                  6. Expected Outcome & Core Innovation
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p>
+                    The outcome is a fully functional multi-agent autonomous platform that coordinates software project management workflows, responds intelligently to client prompts, keeps database records synchronized in Supabase, evaluates financial/schedule risks dynamically, and automates code testing through GitHub integration.
+                  </p>
+                  <p className="p-3.5 rounded-lg bg-primary/5 border-l-4 border-primary text-foreground/90 font-medium text-xs sm:text-sm">
+                    <strong>Key Architectural Innovation:</strong> The coordination of specialized AI agents around a shared, persistent relational project state—enabling the system to evaluate cross-functional ripple effects across the entire project rather than treating client interactions as isolated chatbot responses.
+                  </p>
+                </div>
+              </section>
+
+              {/* 8. Demo Video */}
+              <section className="space-y-4 rounded-xl p-5 bg-card border border-border">
+                <div className="flex items-center gap-2 text-primary font-bold text-lg">
+                  <Video size={20} />
+                  System Demonstration (Video Demo)
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  Watch the Agentic AI Project Management System in action coordinating client dialogue, agent decision paths, Supabase updates, and project execution:
+                </p>
+                <div className="overflow-hidden rounded-xl border border-border bg-black shadow-lg">
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto max-h-[480px] mx-auto"
+                  >
+                    <source src="/projects/pm/pm.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </section>
+            </>
+          )}
+
+          {/* ===================================================================== */}
+          {/* 4. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* ===================================================================== */}
+          {!isFutureFace && !isTriply && !isPM && (
             <div className="py-8 space-y-6">
               <div className="p-4 rounded-xl bg-card border border-border space-y-3">
                 <h4 className="text-lg font-bold text-foreground">Project Overview</h4>

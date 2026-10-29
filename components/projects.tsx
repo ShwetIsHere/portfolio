@@ -33,11 +33,13 @@ const projects: ProjectData[] = [
   {
     id: 3,
     title: "Agentic Project Manager",
+    date: "02 Aug, 2026 - 30 Oct, 2026",
     description:
       "Built a multi-agent AI project management system automating client communication, resource allocation, budgeting, scheduling, risk prediction, and quality assurance.",
     tags: ["Python", "LangChain", "Supabase", "LLMs", "API", "AI Agents"],
     github: "https://github.com/ShwetIsHere/Project-Management-AI",
     icon: Bot,
+    hasDetails: true,
   },
   {
     id: 4,
