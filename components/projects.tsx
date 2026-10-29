@@ -1,19 +1,22 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { ExternalLink, Github, Globe, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users, ScanFace, Plane, Bot } from "lucide-react"
+import { ExternalLink, Github, Globe, Wind, Camera, Hospital, GraduationCap, Building2, Monitor, ChefHat, Users, ScanFace, Plane, Bot, Eye } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import ProjectModal, { type ProjectData } from "@/components/project-modal"
 
-const projects = [
+const projects: ProjectData[] = [
   {
     id: 1,
     title: "Future-Face",
+    date: "03 Aug, 2026 - 31 Oct, 2026",
     description:
       "Developed an AI-powered age estimation and facial age transformation system that predicts age and generates future facial appearances.",
     tags: ["Python", "PyTorch", "Torchvision", "ResNet-50", "Yu-Net", "Computer Vision"],
     github: "https://github.com/ShwetIsHere/Future-Face",
     icon: ScanFace,
+    hasDetails: true,
   },
   {
     id: 2,
@@ -109,6 +112,7 @@ const projects = [
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null)
 
   const visibleProjects = useMemo(() => {
     return showAll ? projects : projects.slice(0, 4)
@@ -128,45 +132,56 @@ export default function Projects() {
             return (
               <div
                 key={project.id}
-                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 animate-fadeIn"
+                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 animate-fadeIn flex flex-col justify-between"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="mb-4">
-                  <IconComponent className="w-10 h-10 text-primary" />
+                <div>
+                  <div className="mb-4">
+                    <IconComponent className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex flex-wrap items-center gap-4">
+
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
+                  >
+                    <Eye size={16} />
+                    See Details
+                  </button>
                   {project.live && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-primary/30 text-primary hover:bg-primary/10 transition-colors font-medium text-sm"
                     >
-                      <Globe size={18} />
+                      <Globe size={16} />
                       Live Demo
-                      <ExternalLink size={16} />
+                      <ExternalLink size={14} />
                     </a>
                   )}
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors font-medium"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border hover:border-primary/50 text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
                   >
-                    <Github size={18} />
-                    View on GitHub
-                    <ExternalLink size={16} />
+                    <Github size={16} />
+                    GitHub
+                    <ExternalLink size={14} />
                   </a>
                 </div>
               </div>
@@ -184,6 +199,13 @@ export default function Projects() {
             </Button>
           </div>
         )}
+
+        {/* Project Details Modal */}
+        <ProjectModal
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </section>
   )
