@@ -55,11 +55,13 @@ const projects: ProjectData[] = [
   {
     id: 5,
     title: "Campus AI Surveillance",
+    date: "04 Mar, 2026 - 17 May, 2026",
     description:
-      "Smart campus monitoring system using YOLO model for crowd detection, weapon detection, and restricted area alerts.",
-    tags: ["Python", "YOLO", "Computer Vision", "Hadoop", "Spark", "Kafka"],
+      "Real-time campus security platform using fine-tuned YOLO11n, Kafka, Spark, and Hadoop for weapon detection, fight identification, crowd density analysis, and restricted area alerts.",
+    tags: ["Python", "YOLO11n", "Computer Vision", "Kafka", "PySpark", "Hadoop", "MySQL", "MongoDB"],
     github: "https://github.com/ShwetIsHere/Studio",
     icon: Camera,
+    hasDetails: true,
   },
   {
     id: 6,

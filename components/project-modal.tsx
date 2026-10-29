@@ -51,6 +51,8 @@ import {
   Wind,
   Zap,
   Radio,
+  Camera,
+  Eye,
   type LucideIcon,
 } from "lucide-react"
 
@@ -84,6 +86,10 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
   const isQAir =
     project.title.toLowerCase().includes("qair") ||
     project.id === 4
+  const isCampus =
+    project.title.toLowerCase().includes("campus") ||
+    project.title.toLowerCase().includes("surveillance") ||
+    project.id === 5
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -364,7 +370,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     {/* demo1.jpg */}
                     <div className="space-y-2">
                       <div className="text-xs font-semibold uppercase tracking-wider text-primary text-center">
-                        Aging Progression (demo1: +25 Years | Target Age 65)
+                        Aging Progression (+25 Years | Target Age 65)
                       </div>
                       <div className="overflow-hidden rounded-xl border border-border bg-black/40 shadow-md">
                         <img
@@ -381,7 +387,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     {/* demo2.jpg */}
                     <div className="space-y-2">
                       <div className="text-xs font-semibold uppercase tracking-wider text-accent text-center">
-                        Youth Regression (demo2: -25 Years | Target Age 15)
+                        Youth Regression (-25 Years | Target Age 15)
                       </div>
                       <div className="overflow-hidden rounded-xl border border-border bg-black/40 shadow-md">
                         <img
@@ -1483,9 +1489,297 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
           )}
 
           {/* ===================================================================== */}
-          {/* 5. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* 5. CAMPUS AI SURVEILLANCE CASE STUDY                                  */}
           {/* ===================================================================== */}
-          {!isFutureFace && !isTriply && !isPM && !isQAir && (
+          {isCampus && (
+            <>
+              {/* 1. Hero Cover Banner: cover.png */}
+              <div className="space-y-3">
+                <div className="overflow-hidden rounded-xl border border-border bg-card shadow-md">
+                  <img
+                    src="/projects/campus/cover.png"
+                    alt="AI Campus Safety System - Real-Time Weapon Detection & Smart Surveillance"
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground text-center italic">
+                  AI Campus Safety System: Real-time weapon detection, multi-camera parallel stream ingestion with Kafka, distributed processing with Apache Spark, and scalable big data persistence.
+                </p>
+              </div>
+
+              {/* 2. Why This Project? */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border/80">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <ShieldAlert className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Why Campus AI Surveillance?
+                  </h3>
+                </div>
+                <div className="text-base sm:text-lg font-semibold text-foreground/90">
+                  Proactive Safety & Real-Time Threat Prevention in Educational Institutions
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p className="p-3.5 rounded-lg bg-primary/5 border-l-4 border-primary text-foreground/90 font-medium">
+                    "Nowadays, alarming incidents are increasingly reported where teenagers and students bring weapons into schools—often under peer pressure or trying to appear 'cool'. Ensuring a safe educational environment requires intelligent, automated detection before escalation occurs."
+                  </p>
+                  <p>
+                    Traditional campus security relies on manual CCTV monitoring by security guards staring at dozens of split screens simultaneously, making it practically impossible to catch every flashpoint before it turns dangerous. <strong className="text-foreground">Campus AI Surveillance</strong> was built to transform passive surveillance into an active, automated early-warning system.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                      <div className="font-semibold text-foreground text-sm flex items-center gap-2">
+                        <AlertTriangle className="w-4 h-4 text-red-500 shrink-0" />
+                        Weapon & Violence Prevention
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Detects concealed or brandished weapons (knives, firearms) and physical student fights immediately before severe injuries occur, alerting staff on duty.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                      <div className="font-semibold text-foreground text-sm flex items-center gap-2">
+                        <ShieldAlert className="w-4 h-4 text-amber-500 shrink-0" />
+                        Restricted Zone Safeguards
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Enforces zero-entry zones such as IT server rooms after school hours or the principal’s cabin when unstaffed, preventing unauthorized access to exam papers, records, and sensitive infrastructure.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                      <div className="font-semibold text-foreground text-sm flex items-center gap-2">
+                        <Users className="w-4 h-4 text-blue-500 shrink-0" />
+                        Abnormal Crowd Alerts
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Identifies sudden dense student congregations in corridors or courtyards, giving administration instant situational awareness to understand why a crowd gathered and whether an incident is taking place.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* 3. What is Project? */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Camera className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    What is Campus AI Surveillance?
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Our project solves these critical security challenges by integrating fine-tuned computer vision with real-time multi-channel notification pipelines:
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                      Instant Weapon Alert Dispatch
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Whenever an individual is identified carrying a weapon (knife, handgun), the system dispatches instantaneous high-priority alerts with visual snapshot evidence directly to respective teachers and security guards.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                      Fight & Aggression Recognition
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      If students begin fighting, the action recognition model flags violent physical interactions in progress and immediately dispatches alerts to intervene before escalation.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
+                      <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+                      Restricted Area Intrusion Detection
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Monitors sensitive boundaries (server rooms after closing, principal cabin without faculty). Whenever someone breaches a restricted polygon, alerts are immediately sent to teachers and security staff.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center gap-2 font-semibold text-foreground text-sm">
+                      <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                      Crowd Density & Person Counting
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Continuously counts persons and detects crowd surges in real-time, providing staff with live density metrics to monitor hallway bottlenecks and prevent potential stampedes or hidden brawls.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-primary/5 border border-primary/20 space-y-1.5 mt-2">
+                  <div className="font-semibold text-foreground text-sm flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    Fine-Tuned YOLO11n Core Model
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    For these tasks, we fine-tuned <strong className="text-foreground">YOLO11n</strong>—the modern compact architecture optimized for lightning-fast inference, high FPS on CCTV hardware, and minimal false positives across weapon classification, crowd density estimation, and person detection.
+                  </p>
+                </div>
+              </section>
+
+              {/* 4. Workflow Diagram (workflow.png) */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Layers className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Multi-Camera Streaming & Ingestion Workflow
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  To process multiple simultaneous camera feeds without latency spikes or dropped frames, our architecture connects edge camera streams to a distributed big data pipeline:
+                </p>
+
+                <div className="space-y-2 pt-1">
+                  <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm p-2 sm:p-3">
+                    <img
+                      src="/projects/campus/workflow.png"
+                      alt="Multi-Camera Ingestion and Detection Workflow Pipeline"
+                      className="w-full h-auto object-contain max-h-[500px] mx-auto rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    Figure 1: End-to-end distributed workflow—Parallel CCTV streams ingested via Kafka, frame inference executed on fine-tuned YOLO11n, high-confidence detections filtered via Apache Spark (&gt; 0.7 confidence), and stored in parallel across Hadoop, MySQL, and MongoDB.
+                  </p>
+                </div>
+              </section>
+
+              {/* 5. What is for What? (Technologies & Architectural Roles) */}
+              <section className="space-y-6 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Server className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    What is for What? (Technology Stack & Architecture)
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Every layer in our technology stack was chosen to solve specific distributed computing, real-time messaging, and forensic storage challenges:
+                </p>
+
+                <div className="space-y-3.5">
+                  {/* Kafka */}
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-foreground font-bold text-sm sm:text-base">
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                        Apache Kafka
+                      </div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                        Parallel Multi-Camera Ingestion
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <strong className="text-foreground">Why Kafka?</strong> Campuses have multiple cameras streaming video feeds at the exact same time (<code className="text-foreground font-mono text-xs">Camera 1, Camera 2, ... Camera N</code>). Kafka acts as a distributed, high-throughput message broker that buffers and processes multiple video streams in parallel with zero frame loss, decoupling video ingestion from AI inference.
+                    </p>
+                  </div>
+
+                  {/* PySpark */}
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-foreground font-bold text-sm sm:text-base">
+                        <span className="w-2.5 h-2.5 rounded-full bg-orange-500" />
+                        Apache Spark (PySpark)
+                      </div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-orange-500/10 text-orange-500 border border-orange-500/20">
+                        Parallel Filtering & Multi-Database Ingestion
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <strong className="text-foreground">Why PySpark?</strong> Storing detection data from dozens of parallel cameras in real-time creates massive I/O bottlenecks. PySpark performs distributed stream filtering (filtering for valid detections with <code className="text-foreground font-mono text-xs">confidence &gt; 0.70</code> to eliminate false positives) and orchestrates concurrent, parallel writes across databases simultaneously.
+                    </p>
+                  </div>
+
+                  {/* Hadoop */}
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-foreground font-bold text-sm sm:text-base">
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
+                        Apache Hadoop (HDFS)
+                      </div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
+                        Distributed Image File Storage
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <strong className="text-foreground">Why Hadoop?</strong> Video security archives accumulate gigabytes of detected image captures daily. Hadoop Distributed File System (HDFS) provides fault-tolerant, horizontally scalable storage for permanently storing high-resolution incident frames and detected visual evidence.
+                    </p>
+                  </div>
+
+                  {/* MySQL */}
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-foreground font-bold text-sm sm:text-base">
+                        <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+                        MySQL
+                      </div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                        Relational Incident Metadata
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <strong className="text-foreground">Why MySQL?</strong> Provides fast relational indexing for administrative queries, reports, and search. Stores critical metadata for every event: image file path in Hadoop, AI confidence score, weapon type (e.g., knife, gun), date and time, camera identifier, and security status.
+                    </p>
+                  </div>
+
+                  {/* MongoDB */}
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-1.5">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2 text-foreground font-bold text-sm sm:text-base">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                        MongoDB
+                      </div>
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                        Spatial Bounding Box Geometry
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <strong className="text-foreground">Why MongoDB?</strong> The JSON document format is ideal for high-frequency coordinate arrays. Stores exact spatial coordinates for detected objects: x-axis, y-axis, width, and length (height), enabling forensic overlays, trajectory tracking, and replay visualizations.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 6. Live Camera Demonstration Video (safety.mp4) */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2 text-primary font-bold text-lg">
+                  <Video size={20} />
+                  Live System Demonstration (Camera Feed)
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  In this demonstration, a live camera feed showcases real-time crowd detection, fight identification, restricted area intrusion monitoring, and automated person counting:
+                </p>
+
+                <div className="overflow-hidden rounded-xl border border-border bg-black shadow-lg">
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto max-h-[500px] mx-auto"
+                  >
+                    <source src="/projects/campus/safety.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="text-xs text-muted-foreground text-center italic">
+                  Live CCTV test feed: Real-time person counting, crowd threshold identification, fight detection, and restricted boundary monitoring in action.
+                </p>
+              </section>
+            </>
+          )}
+
+          {/* ===================================================================== */}
+          {/* 6. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* ===================================================================== */}
+          {!isFutureFace && !isTriply && !isPM && !isQAir && !isCampus && (
             <div className="py-8 space-y-6">
               <div className="p-4 rounded-xl bg-card border border-border space-y-3">
                 <h4 className="text-lg font-bold text-foreground">Project Overview</h4>
