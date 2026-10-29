@@ -40,6 +40,17 @@ import {
   ShieldCheck,
   CheckSquare,
   GitBranch,
+  Activity,
+  BellRing,
+  Bluetooth,
+  HeartPulse,
+  Hospital as HospitalIcon,
+  MapPin,
+  Smartphone,
+  Stethoscope,
+  Wind,
+  Zap,
+  Radio,
   type LucideIcon,
 } from "lucide-react"
 
@@ -70,6 +81,9 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
     project.title.toLowerCase().includes("project manager") ||
     project.title.toLowerCase().includes("project-management") ||
     project.id === 3
+  const isQAir =
+    project.title.toLowerCase().includes("qair") ||
+    project.id === 4
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -1098,9 +1112,380 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
           )}
 
           {/* ===================================================================== */}
-          {/* 4. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* 4. QAIR - ASTHMA TRACKER CASE STUDY                                   */}
           {/* ===================================================================== */}
-          {!isFutureFace && !isTriply && !isPM && (
+          {isQAir && (
+            <>
+              {/* 1. Hero Mobile App Preview (demo.png) */}
+              <div className="space-y-3">
+                <div className="overflow-hidden rounded-xl border border-border bg-card shadow-md p-2 sm:p-4">
+                  <img
+                    src="/projects/qair/demo.png"
+                    alt="QAir Mobile App Interface Preview"
+                    className="w-full h-auto object-contain max-h-[500px] mx-auto rounded-lg"
+                  />
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground text-center italic">
+                  QAir React Native mobile application: Trigger Heatmap, IoT Device Management & Inhaler Telemetry, and Real-Time Air Quality with Emergency SOS.
+                </p>
+              </div>
+
+              {/* 2. Why This Project? */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border/80">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <HeartPulse className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Why QAir?
+                  </h3>
+                </div>
+                <div className="text-base sm:text-lg font-semibold text-foreground/90">
+                  Empowering Asthma Patients with IoT-Driven Predictive Environmental Intelligence
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p className="p-3.5 rounded-lg bg-primary/5 border-l-4 border-primary text-foreground/90 font-medium">
+                    "Asthma attacks are frequently provoked by sudden, invisible environmental shifts—pollution spikes, allergen surges, and drastic humidity fluctuations. Most patients only realize danger after severe symptoms strike."
+                  </p>
+                  <p>
+                    We developed <strong className="text-foreground">QAir</strong> specifically for asthma patients so they can proactively manage, track, and mitigate their environmental triggers before an attack escalates.
+                  </p>
+                  <p>
+                    Traditional asthma management relies on patient memory and paper journals, which are prone to inaccuracies and impossible to log during acute respiratory distress. QAir automates tracking completely by pairing smart inhaler IoT hardware with AI-driven predictive environmental models that alert patients when ambient air matches their personal trigger profile.
+                  </p>
+                </div>
+              </section>
+
+              {/* 3. What is QAir? & 3-Tier System Architecture */}
+              <section className="space-y-6 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Layers className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    What is QAir? & Architecture
+                  </h3>
+                </div>
+
+                <div className="space-y-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    <strong className="text-foreground">QAir</strong> is an end-to-end intelligent respiratory health platform consisting of a cross-platform <strong className="text-foreground">React Native mobile application</strong> (supporting both Android & iOS) and an <strong className="text-foreground">IoT smart retrofit device</strong> (powered by an ESP32 microcontroller and FSR pressure sensor).
+                  </p>
+                  <p>
+                    The IoT device mounts seamlessly onto standard Metered Dose Inhalers (MDIs), detects medication actuation, communicates wirelessly via <strong className="text-foreground">Bluetooth Low Energy (BLE)</strong>, and synchronizes real-time geospatial and environmental telemetry with <strong className="text-foreground">Supabase</strong>.
+                  </p>
+                </div>
+
+                {/* Architecture Diagram */}
+                <div className="space-y-2 pt-2">
+                  <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm p-2 sm:p-3">
+                    <img
+                      src="/projects/qair/architecture.png"
+                      alt="QAir 3-Tier System Architecture"
+                      className="w-full h-auto object-contain max-h-[460px] mx-auto rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    Figure 1: 3-Tier Architecture—Physical Sensing Layer (ESP32/BLE), Mobile Application & Analytics Layer (React Native/Gemini AI), and Cloud Persistence Layer (Supabase/SMS Gateway).
+                  </p>
+                </div>
+
+                {/* Architecture Breakdown Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2">
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm">
+                      <Cpu size={16} />
+                      Tier 1: Sensing Layer
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Custom 3D clip with ESP32-C3 and FSR 402 force sensor mounted to MDI canister. Detects puff actuations with 98.1% accuracy and transmits encrypted BLE GATT packets.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-accent font-bold text-sm">
+                      <Smartphone size={16} />
+                      Tier 2: Mobile & AI Analytics
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      React Native application captures device GPS and polls environmental APIs (AQI, PM2.5, humidity, pollen). Runs predictive risk model to detect high-hazard conditions.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-500 font-bold text-sm">
+                      <Database size={16} />
+                      Tier 3: Cloud & Emergency
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Supabase PostgreSQL database stores encrypted attack logs, dosage counters, and patient profiles. Triggers automated SMS SOS alerts to caregivers via Edge Functions.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 4. Smart IoT Hardware Retrofit */}
+              <section className="space-y-6 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Radio className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Smart IoT Inhaler Retrofit (ESP32 & FSR 402)
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Rather than forcing patients to purchase expensive proprietary smart inhalers, QAir features an affordable, non-destructive retrofit clip designed in CAD and 3D printed in lightweight PLA:
+                </p>
+
+                {/* Hardware Photo Preview */}
+                <div className="space-y-2">
+                  <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm p-2 sm:p-3">
+                    <img
+                      src="/projects/qair/hardware.png"
+                      alt="QAir Hardware Prototype and Inhaler Clip"
+                      className="w-full h-auto object-contain max-h-[460px] mx-auto rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    Figure 2: Custom 3D-printed enclosure housing the ESP32-C3 microcontroller, FSR 402 sensor assembly, and LiPo power unit.
+                  </p>
+                </div>
+
+                {/* Specs List */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-foreground">ESP32-C3 RISC-V SoC:</span> Ultra-low power Bluetooth Low Energy (BLE 5.0) with AES-128 encryption.
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-foreground">FSR 402 Force Sensor:</span> Calibrated threshold detection under canister flange with 50ms software debounce.
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-foreground">30+ Days Battery Life:</span> 150 mAh rechargeable LiPo cell with deep sleep states during inactivity.
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-foreground">Universal Clip-On Form Factor:</span> Snaps onto standard MDI canisters without obstructing emergency drug delivery.
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* 5. Real-Time Detection Pipeline (workflow.png) */}
+              <section className="space-y-6 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Zap className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Sub-3-Second Real-Time Detection Pipeline
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  During an asthma attack, every second matters. QAir is engineered to complete the full sensor-to-cloud notification loop in less than 3 seconds:
+                </p>
+
+                {/* Workflow Image */}
+                <div className="space-y-2">
+                  <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm p-2 sm:p-3">
+                    <img
+                      src="/projects/qair/workflow.png"
+                      alt="QAir Detection and Alert Workflow"
+                      className="w-full h-auto object-contain max-h-[480px] mx-auto rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    Figure 3: High-speed event pipeline from physical puff actuation to multi-parameter environmental ingestion, AI evaluation, and emergency dispatch.
+                  </p>
+                </div>
+
+                {/* Step Breakdown */}
+                <div className="space-y-2.5 text-xs sm:text-sm">
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">1</span>
+                      <span className="font-semibold text-foreground">Inhaler Actuation:</span>
+                      <span className="text-muted-foreground">Patient presses canister; FSR 402 triggers interrupt.</span>
+                    </div>
+                    <span className="font-mono text-xs text-primary font-semibold">T + 0.0s</span>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">2</span>
+                      <span className="font-semibold text-foreground">BLE GATT Transmission:</span>
+                      <span className="text-muted-foreground">ESP32 delivers event notification to React Native app.</span>
+                    </div>
+                    <span className="font-mono text-xs text-primary font-semibold">&lt; 200ms</span>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">3</span>
+                      <span className="font-semibold text-foreground">GPS & Weather Ingestion:</span>
+                      <span className="text-muted-foreground">App captures exact coordinates and queries live AQI/PM2.5 API.</span>
+                    </div>
+                    <span className="font-mono text-xs text-primary font-semibold">&lt; 1.2s</span>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">4</span>
+                      <span className="font-semibold text-foreground">AI Risk Evaluation:</span>
+                      <span className="text-muted-foreground">Machine learning model correlates current conditions with attack history.</span>
+                    </div>
+                    <span className="font-mono text-xs text-primary font-semibold">&lt; 2.0s</span>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-background border border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs">5</span>
+                      <span className="font-semibold text-foreground">Supabase Sync & SOS Alert:</span>
+                      <span className="text-muted-foreground">Cloud persistence and instant SMS dispatch with patient coordinates.</span>
+                    </div>
+                    <span className="font-mono text-xs text-primary font-semibold">&lt; 2.8s</span>
+                  </div>
+                </div>
+              </section>
+
+              {/* 6. System Features & Specifications (system_feature.png) */}
+              <section className="space-y-6 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <LayoutGrid className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    Comprehensive System Features
+                  </h3>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm p-2 sm:p-3">
+                    <img
+                      src="/projects/qair/system_feature.png"
+                      alt="QAir Complete System Feature Matrix"
+                      className="w-full h-auto object-contain max-h-[500px] mx-auto rounded-lg"
+                    />
+                  </div>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    Figure 4: Complete functional feature matrix covering hardware, environmental telemetry, geofencing, clinical reporting, and safety integrations.
+                  </p>
+                </div>
+
+                {/* 6 Core Functional Modules */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-primary font-semibold text-sm">
+                      <Activity className="w-4 h-4" />
+                      Environmental Risk Monitor
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Continuously polls ambient AQI, particulate matter (PM2.5, PM10), temperature, and humidity. Notifies the patient beforehand if current air quality matches conditions where prior asthma attacks were triggered.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-accent font-semibold text-sm">
+                      <Map className="w-4 h-4" />
+                      Interactive Attack Heatmap
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Interactive map interface plotting every past attack location. Users can click any marker to review historical atmospheric conditions at that exact time versus real-time current conditions.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-red-500 font-semibold text-sm">
+                      <BellRing className="w-4 h-4" />
+                      Automated Emergency SOS
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Whenever an acute attack occurs, designated emergency contacts receive an immediate automated alert message containing the patient's live GPS coordinates and local air toxicity metrics.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-blue-500 font-semibold text-sm">
+                      <HospitalIcon className="w-4 h-4" />
+                      Top 5 Nearest Hospitals
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      GPS-powered emergency locator that queries and displays the top 5 nearest healthcare facilities and emergency rooms, complete with distance calculation and one-tap turn-by-turn navigation.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-500 font-semibold text-sm">
+                      <FileText className="w-4 h-4" />
+                      Clinical Doctor Reports (PDF)
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Generates structured, exportable medical PDF reports summarizing attack frequencies, environmental triggers, medication usage, and dosage patterns for consultation with pulmonologists.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-background border border-border space-y-2">
+                    <div className="flex items-center gap-2 text-amber-500 font-semibold text-sm">
+                      <ShieldCheck className="w-4 h-4" />
+                      Inhaler Dose Tracking & Alerts
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Tracks remaining doses automatically on every physical puff. Issues proactive notifications when dose count drops below 20 puffs or when medication approaches expiration.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 7. Vertical Mobile Demonstration Video (qair.mp4) */}
+              <section className="space-y-5 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2 text-primary font-bold text-lg">
+                  <Video size={20} />
+                  Live Mobile Application Demonstration
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Watch the complete end-to-end walkthrough of the QAir React Native mobile app in action, demonstrating Bluetooth device connection, real-time risk geofencing, trigger mapping, and emergency alerts:
+                </p>
+
+                {/* Sleek Smartphone Mockup Frame for Vertical 9:16 Video */}
+                <div className="py-4 flex justify-center">
+                  <div className="w-full max-w-[310px] sm:max-w-[340px] rounded-[44px] p-3.5 bg-neutral-900 border-4 border-neutral-700/80 shadow-2xl relative">
+                    {/* Phone Top Speaker & Camera Bezel Notch */}
+                    <div className="w-24 h-4 bg-neutral-800 rounded-full mx-auto mb-2 flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-neutral-950"></div>
+                      <div className="w-8 h-1 rounded-full bg-neutral-700"></div>
+                    </div>
+
+                    {/* Video Player in 9:16 vertical ratio */}
+                    <div className="relative aspect-[9/16] w-full rounded-[28px] overflow-hidden bg-black shadow-inner">
+                      <video
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover"
+                      >
+                        <source src="/projects/qair/qair.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+
+                    {/* Phone Bottom Home Bar Indicator */}
+                    <div className="w-24 h-1 bg-neutral-600 rounded-full mx-auto mt-2.5"></div>
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground text-center italic">
+                  Recorded from the live React Native build on mobile device.
+                </p>
+              </section>
+            </>
+          )}
+
+          {/* ===================================================================== */}
+          {/* 5. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* ===================================================================== */}
+          {!isFutureFace && !isTriply && !isPM && !isQAir && (
             <div className="py-8 space-y-6">
               <div className="p-4 rounded-xl bg-card border border-border space-y-3">
                 <h4 className="text-lg font-bold text-foreground">Project Overview</h4>

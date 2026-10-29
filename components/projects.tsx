@@ -44,11 +44,13 @@ const projects: ProjectData[] = [
   {
     id: 4,
     title: "QAir - Asthma Tracker",
+    date: "12 Jul, 2025 - 21 May, 2026",
     description:
       "Real-time asthma patient tracking and reporting app with weather integration and danger zone detection.",
-    tags: ["React Native", "Supabase", "API", "Maps"],
+    tags: ["React Native", "Supabase", "API", "Maps", "IoT", "ESP32", "AI/ML"],
     github: "https://github.com/ShwetIsHere/QAir-Asthma",
     icon: Wind,
+    hasDetails: true,
   },
   {
     id: 5,
