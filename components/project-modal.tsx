@@ -18,6 +18,16 @@ import {
   BrainCircuit,
   Info,
   X,
+  Plane,
+  Building,
+  CloudSun,
+  Map,
+  FileText,
+  Server,
+  Cpu,
+  Globe,
+  Compass,
+  MessageSquare,
   type LucideIcon,
 } from "lucide-react"
 
@@ -43,6 +53,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
   if (!project) return null
 
   const isFutureFace = project.title === "Future-Face" || project.id === 1
+  const isTriply = project.title.toLowerCase().includes("triply") || project.id === 2
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -128,7 +139,10 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
         {/* SCROLLABLE BODY: Content scrolls independently with sleek custom scrollbar */}
         {/* ========================================================================= */}
         <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8 space-y-10 custom-scrollbar text-foreground leading-relaxed">
-          {isFutureFace ? (
+          {/* ===================================================================== */}
+          {/* 1. FUTURE-FACE CASE STUDY                                             */}
+          {/* ===================================================================== */}
+          {isFutureFace && (
             <>
               {/* 1. Hero Preview: Combine.png */}
               <div className="space-y-3">
@@ -320,7 +334,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     {/* demo1.jpg */}
                     <div className="space-y-2">
                       <div className="text-xs font-semibold uppercase tracking-wider text-primary text-center">
-                        Aging Progression (+25 Years | Target Age 65)
+                        Aging Progression (demo1: +25 Years | Target Age 65)
                       </div>
                       <div className="overflow-hidden rounded-xl border border-border bg-black/40 shadow-md">
                         <img
@@ -337,7 +351,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     {/* demo2.jpg */}
                     <div className="space-y-2">
                       <div className="text-xs font-semibold uppercase tracking-wider text-accent text-center">
-                        Youth Regression (-25 Years | Target Age 15)
+                        Youth Regression (demo2: -25 Years | Target Age 15)
                       </div>
                       <div className="overflow-hidden rounded-xl border border-border bg-black/40 shadow-md">
                         <img
@@ -376,8 +390,236 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 </div>
               </section>
             </>
-          ) : (
-            /* Fallback for other projects */
+          )}
+
+          {/* ===================================================================== */}
+          {/* 2. TRIPLY MULTI-AGENT TRAVEL PLANNER CASE STUDY                       */}
+          {/* ===================================================================== */}
+          {isTriply && (
+            <>
+              {/* 1. Hero Architecture Workflow Banner: workflow.png */}
+              <div className="space-y-3">
+                <div className="overflow-hidden rounded-xl border border-border bg-card shadow-md">
+                  <img
+                    src="/projects/triply/workflow.png"
+                    alt="Triply Multi-Agent LangGraph Workflow"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground text-center italic">
+                  End-to-end multi-agent orchestration architecture managed with LangGraph, specialized LLMs, and Model Context Protocol (MCP).
+                </p>
+              </div>
+
+              {/* 2. Project Overview & Live Deployment Callout */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border/80">
+                <div className="flex items-center gap-2.5 text-primary">
+                  <Compass className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    About Triply
+                  </h3>
+                </div>
+                <div className="text-base sm:text-lg font-semibold text-foreground/90">
+                  AI Multi-Agent Platform for End-to-End Travel Planning
+                </div>
+                <div className="space-y-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  <p>
+                    <strong className="text-foreground">Triply</strong> is an AI multi-agent platform where users can plan trips seamlessly. It provides end-to-end real-time intelligence about flights, hotel accommodations, weather conditions, and day-by-day customized itineraries.
+                  </p>
+
+                  {/* Live Project Alert Card */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-primary/10 via-accent/10 to-transparent border border-primary/20 space-y-3">
+                    <div className="flex items-center gap-2 text-foreground font-semibold text-base">
+                      <Globe className="text-primary w-5 h-5 shrink-0" />
+                      Live in Production
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      The project is already live and interactive! You can test real travel planning prompts directly at{" "}
+                      <a
+                        href="https://travel.heyshwet.me/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-semibold underline underline-offset-4 hover:text-accent"
+                      >
+                        travel.heyshwet.me
+                      </a>
+                      . If you have any feedback or ideas, please submit the feedback page in the app—I actively review all responses to improve Triply as a full product.
+                    </p>
+                    <div className="pt-1">
+                      <a
+                        href="https://travel.heyshwet.me/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity shadow-sm"
+                      >
+                        Launch Triply Live App
+                        <ExternalLink size={15} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* 3. Sample Query */}
+              <section className="space-y-3 p-5 rounded-xl bg-primary/5 border border-primary/20">
+                <div className="flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wider">
+                  <MessageSquare size={16} />
+                  Sample Benchmark Query
+                </div>
+                <div className="text-base sm:text-lg font-bold text-foreground">
+                  “Plan a 3-day trip from Vadodara, Gujarat, India, to Alaska, USA, with a total budget under ₹6,00,000.”
+                </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  Triply ingests this complex cross-continental, budget-constrained query and orchestrates 5 autonomous agents to query flight systems, hotel providers, and weather stations to generate a complete, cohesive schedule.
+                </p>
+              </section>
+
+              {/* 4. The 5-Agent Architecture */}
+              <section className="space-y-6">
+                <div className="flex items-center gap-2.5 text-primary pb-2 border-b border-border">
+                  <Layers className="w-6 h-6" />
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                    The 5 Specialized Agents
+                  </h3>
+                </div>
+
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  I created 5 specialized agents coordinated through a LangGraph directed graph, where each agent is responsible for an isolated domain of the trip:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Agent 1 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold">
+                      <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+                        <Plane size={18} />
+                      </div>
+                      1. Flight Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Searches real-time flight availability, departure/arrival schedules, layovers, and airport information matching the route and budget constraints.
+                    </p>
+                  </div>
+
+                  {/* Agent 2 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold">
+                      <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                        <Building size={18} />
+                      </div>
+                      2. Hotel Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Queries and evaluates accommodations, checking room rates, amenities, proximity to key locations, and total cost against the trip budget.
+                    </p>
+                  </div>
+
+                  {/* Agent 3 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold">
+                      <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+                        <CloudSun size={18} />
+                      </div>
+                      3. Weather Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Checks live atmospheric metrics, temperature ranges, precipitation chances, and multi-day forecasts for the destination city during travel dates.
+                    </p>
+                  </div>
+
+                  {/* Agent 4 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold">
+                      <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+                        <Map size={18} />
+                      </div>
+                      4. Itinerary Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Constructs an optimized day-wise travel schedule, allocating attractions, meal recommendations, and activities aligned with weather and flight timings.
+                    </p>
+                  </div>
+
+                  {/* Agent 5 */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-card border border-border space-y-2 md:col-span-2 hover:border-primary/40 transition-colors">
+                    <div className="flex items-center gap-2.5 text-foreground font-bold">
+                      <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                        <FileText size={18} />
+                      </div>
+                      5. Final Synthesis Agent
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Aggregates and synthesizes data collected from the first 4 agents to produce a polished, unified executive travel dossier ready for the traveler.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 5. MCP Architecture */}
+              <section className="space-y-4 rounded-xl p-5 sm:p-6 bg-card border border-border">
+                <div className="flex items-center gap-2.5 text-primary font-bold text-lg">
+                  <Server className="w-5 h-5" />
+                  Model Context Protocol (MCP) Ecosystem
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  In this project, I integrated a combination of remote, local, and custom Model Context Protocol (MCP) servers to standardize tool connectivity across agents:
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                  <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-primary uppercase tracking-wider">Remote MCP</div>
+                    <div className="font-semibold text-sm text-foreground">Tavily Search</div>
+                    <p className="text-xs text-muted-foreground">
+                      Handles deep web research, hotel discovery, and destination intelligence.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-primary uppercase tracking-wider">Local MCP</div>
+                    <div className="font-semibold text-sm text-foreground">AviationStack</div>
+                    <p className="text-xs text-muted-foreground">
+                      Direct local connectivity for real-time flight schedules and airport data.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-lg bg-background border border-border space-y-1.5">
+                    <div className="text-xs font-bold text-accent uppercase tracking-wider">Custom MCP</div>
+                    <div className="font-semibold text-sm text-foreground">OpenWeather</div>
+                    <p className="text-xs text-muted-foreground">
+                      Custom-engineered MCP server querying hyper-local forecasts and temperatures.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* 6. Demo Video */}
+              <section className="space-y-4 rounded-xl p-5 bg-card border border-border">
+                <div className="flex items-center gap-2 text-primary font-bold text-lg">
+                  <Video size={20} />
+                  Triply in Action (Video Demo)
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  Watch the multi-agent system orchestrate flight searches, hotel reservations, weather checks, and itinerary compilation in real-time:
+                </p>
+                <div className="overflow-hidden rounded-xl border border-border bg-black shadow-lg">
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto max-h-[480px] mx-auto"
+                  >
+                    <source src="/projects/triply/triply.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </section>
+            </>
+          )}
+
+          {/* ===================================================================== */}
+          {/* 3. FALLBACK FOR OTHER PROJECTS                                        */}
+          {/* ===================================================================== */}
+          {!isFutureFace && !isTriply && (
             <div className="py-8 space-y-6">
               <div className="p-4 rounded-xl bg-card border border-border space-y-3">
                 <h4 className="text-lg font-bold text-foreground">Project Overview</h4>

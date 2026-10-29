@@ -21,12 +21,14 @@ const projects: ProjectData[] = [
   {
     id: 2,
     title: "Triply - Multi Agent Trip Planner",
+    date: "20 Aug, 2026 - 24 Aug, 2026",
     description:
       "Autonomous multi-agent travel planner built using LangGraph, FastAPI, and MCP, coordinating specialized LLMs to generate real-time flight, hotel, and weather itineraries.",
     tags: ["Python", "MCP", "API", "AI Agents", "LangGraph", "LangSmith", "LLMs"],
     github: "https://github.com/ShwetIsHere/Triply-Travel-Agent-LangGraph-MCP",
     live: "https://travel.heyshwet.me/",
     icon: Plane,
+    hasDetails: true,
   },
   {
     id: 3,
