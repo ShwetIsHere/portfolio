@@ -215,6 +215,37 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                   <p>
                     In real-world investigative scenarios, historical CCTV footage or old photographs may contain images of suspects or missing individuals. If a person remains unidentified for years, understanding how their appearance might have changed over time could potentially assist investigators in reviewing leads and comparing visual information.
                   </p>
+
+                  {/* Live Project Alert Card */}
+                  <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-primary/10 via-accent/10 to-transparent border border-primary/20 space-y-3">
+                    <div className="flex items-center gap-2 text-foreground font-semibold text-base">
+                      <Globe className="text-primary w-5 h-5 shrink-0" />
+                      Live in Production
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      The project is live and ready to explore! Try out real-time age estimation and facial age transformation at{" "}
+                      <a
+                        href="https://face.heyshwet.me/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-semibold underline underline-offset-4 hover:text-accent"
+                      >
+                        face.heyshwet.me
+                      </a>
+                      .
+                    </p>
+                    <div className="pt-1">
+                      <a
+                        href="https://face.heyshwet.me/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity shadow-sm"
+                      >
+                        Launch Future-Face Live App
+                        <ExternalLink size={15} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </section>
 

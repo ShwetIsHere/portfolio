@@ -15,6 +15,7 @@ const projects: ProjectData[] = [
       "Developed an AI-powered age estimation and facial age transformation system that predicts age and generates future facial appearances.",
     tags: ["Python", "PyTorch", "Torchvision", "ResNet-50", "Yu-Net", "Computer Vision"],
     github: "https://github.com/ShwetIsHere/Future-Face",
+    live: "https://face.heyshwet.me/",
     icon: ScanFace,
     hasDetails: true,
   },
