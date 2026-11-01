@@ -1,6 +1,6 @@
 "use client"
 
-import { GraduationCap, BookOpen, School, Star, CheckCircle2 } from "lucide-react"
+import { Star, CheckCircle2 } from "lucide-react"
 
 export default function Education() {
   const milestones = [
@@ -8,64 +8,50 @@ export default function Education() {
       year: "2019 - 2021",
       degree: "Secondary School Certificate (SSC)",
       institution: "Zen School, Padra",
-      field: "General Studies",
+      score: "SSC: 87%",
+      logo: "/education/zen.png",
       description:
         "Completed secondary schooling with strong foundations in science, mathematics, and logical reasoning.",
       status: "completed",
-      icon: School,
-      // Desktop positioning & SVG connections (coordinates mapped to 1000x620 viewBox)
-      nodeX: 70,
-      nodeY: 150,
-      stemY: 85,
+      // Desktop positioning & SVG connections (coordinates mapped to 1000x650 viewBox)
+      nodeX: 85,
+      nodeY: 232,
+      stemY: 175,
       cardStyle: { left: "3%", top: "1%" },
     },
     {
       year: "2021 - 2023",
       degree: "Higher Secondary Certificate (HSC)",
       institution: "Aditi Science School",
-      field: "Science Stream",
+      score: "HSC: 64%",
+      logo: "/education/aditi.png",
       description:
         "Completed higher secondary education focusing on Physics, Chemistry, and Advanced Mathematics, igniting a passion for computer science.",
       status: "completed",
-      icon: BookOpen,
-      nodeX: 590,
-      nodeY: 185,
-      stemY: 110,
-      cardStyle: { left: "55%", top: "2%" },
+      nodeX: 620,
+      nodeY: 250,
+      stemY: 182,
+      cardStyle: { left: "54%", top: "2%" },
     },
     {
-      year: "2023 - 2025",
-      degree: "B.Tech — Core CS Foundations",
-      institution: "Navrachna University, Vadodara",
-      field: "Computer Science & Engineering",
+      year: "2023 - 2027 (Expected)",
+      degree: "B.Tech in Computer Science & Engineering",
+      institution: "Navrachana University, Vadodara",
+      score: "CGPA: 7.94",
+      logo: "/education/nuv.png",
       description:
-        "Mastered core computing foundations: Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, and Full-Stack Engineering.",
-      status: "completed",
-      icon: GraduationCap,
-      nodeX: 840,
-      nodeY: 435,
-      stemY: 355,
-      cardStyle: { left: "57%", top: "37%" },
-    },
-    {
-      year: "2025 - 2027 (Expected)",
-      degree: "B.Tech — AI/ML & Applied Systems",
-      institution: "Navrachna University, Vadodara",
-      field: "AI/ML Specialization",
-      description:
-        "Developing autonomous AI agents (LangGraph, MCP), computer vision models (YOLO, ResNet), and scalable intelligent software applications.",
+        "Mastering core computing foundations, full-stack engineering, and specializing in AI/ML, autonomous multi-agent systems, and computer vision models.",
       status: "pursuing",
-      icon: Star,
-      nodeX: 440,
-      nodeY: 520,
-      stemY: 440,
-      cardStyle: { left: "18%", top: "51%" },
+      nodeX: 430,
+      nodeY: 560,
+      stemY: 468,
+      cardStyle: { left: "20%", top: "44%" },
     },
   ]
 
-  // Smooth continuous Bezier curve passing through all nodes
+  // Smooth sweeping Bezier trajectory through all 3 milestone nodes
   const curvePath =
-    "M 25 150 C 200 150 400 170 590 185 C 760 200 970 230 970 310 C 970 380 910 415 840 435 C 710 470 570 505 440 520 C 390 528 360 535 320 540"
+    "M 25 230 C 200 230 420 240 620 250 C 780 260 970 290 970 390 C 970 470 910 520 780 540 C 650 555 520 560 430 560 C 360 560 300 570 240 580"
 
   return (
     <section id="education" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -84,13 +70,13 @@ export default function Education() {
         </div>
 
         {/* ========================================================================= */}
-        {/* DESKTOP VIEW: Sleek Luminous Sweeping Curve (Matching Reference Design)   */}
+        {/* DESKTOP VIEW: Sleek Luminous Sweeping Curve with Generous Text Clearance  */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block relative w-full h-[640px] select-none">
+        <div className="hidden lg:block relative w-full h-[660px] select-none">
           {/* SVG Canvas for Curve, Stems, and Glowing Nodes */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 1000 620"
+            viewBox="0 0 1000 650"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -134,7 +120,7 @@ export default function Education() {
               filter="url(#curve-glow)"
             />
 
-            {/* Bright Inner Core White Line */}
+            {/* Bright Inner Core Line */}
             <path
               d={curvePath}
               stroke="#ffffff"
@@ -146,7 +132,7 @@ export default function Education() {
             {/* Milestones: Stems & Nodes */}
             {milestones.map((m, idx) => (
               <g key={idx}>
-                {/* Vertical stem connecting curve to the text card */}
+                {/* Vertical stem connecting curve to the text card with clean clearance */}
                 <line
                   x1={m.nodeX}
                   y1={m.nodeY}
@@ -187,31 +173,45 @@ export default function Education() {
             ))}
           </svg>
 
-          {/* Milestone Text Cards overlay positioned along the stems */}
+          {/* Milestone Text Cards overlay positioned along the stems with full z-index */}
           {milestones.map((m, idx) => (
             <div
               key={idx}
               style={m.cardStyle}
-              className="absolute max-w-[340px] group transition-all duration-300 hover:-translate-y-1"
+              className="absolute max-w-[360px] group transition-all duration-300 hover:-translate-y-1 z-10"
             >
-              {/* Subtle ambient blur behind each text card */}
-              <div className="absolute -inset-3 bg-primary/10 rounded-xl blur-lg pointer-events-none -z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
+              <div className="relative bg-card/90 dark:bg-card/85 backdrop-blur-md border border-border/80 hover:border-primary/50 rounded-xl p-4 shadow-sm hover:shadow-md transition-all space-y-2">
+                {/* Header: Logo, Year & Badges */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-lg bg-white p-1 border border-border/80 shadow-xs flex items-center justify-center shrink-0">
+                      <img
+                        src={m.logo}
+                        alt={m.institution}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                      {m.year}
+                    </h3>
+                  </div>
 
-              <div className="space-y-1.5 p-2">
-                {/* Year Header */}
-                <div className="flex items-center gap-2.5">
-                  <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
-                    {m.year}
-                  </h3>
-                  {m.status === "pursuing" && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30 animate-pulse">
-                      <Star className="w-3 h-3" />
-                      Pursuing
-                    </span>
-                  )}
+                  <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                    {m.score && (
+                      <span className="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                        {m.score}
+                      </span>
+                    )}
+                    {m.status === "pursuing" && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30 animate-pulse">
+                        <Star className="w-3 h-3" />
+                        Pursuing
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Degree & Field */}
+                {/* Degree */}
                 <div className="font-semibold text-primary/95 text-sm md:text-[15px] leading-snug">
                   {m.degree}
                 </div>
@@ -231,9 +231,9 @@ export default function Education() {
         </div>
 
         {/* ========================================================================= */}
-        {/* MOBILE & TABLET VIEW: Sleek Vertical Luminous Timeline                    */}
+        {/* MOBILE & TABLET VIEW: Sleek Vertical Timeline with Logos & Marks          */}
         {/* ========================================================================= */}
-        <div className="block lg:hidden relative pl-6 border-l-2 border-primary/50 space-y-10 my-8">
+        <div className="block lg:hidden relative pl-6 border-l-2 border-primary/50 space-y-8 my-8">
           {milestones.map((m, idx) => (
             <div key={idx} className="relative group">
               {/* Glowing Timeline Node */}
@@ -244,20 +244,37 @@ export default function Education() {
               </div>
 
               {/* Card content */}
-              <div className="bg-card/70 border border-border/80 rounded-xl p-5 backdrop-blur-sm shadow-sm space-y-2 group-hover:border-primary/50 transition-colors">
+              <div className="bg-card/80 border border-border/80 rounded-xl p-5 backdrop-blur-sm shadow-sm space-y-2.5 group-hover:border-primary/50 transition-colors">
                 <div className="flex items-center justify-between flex-wrap gap-2">
-                  <span className="text-lg font-bold text-foreground">{m.year}</span>
-                  {m.status === "pursuing" ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase px-2.5 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30 animate-pulse">
-                      <Star className="w-3 h-3" />
-                      Pursuing
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-green-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Completed
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-lg bg-white p-1 border border-border shadow-xs flex items-center justify-center shrink-0">
+                      <img
+                        src={m.logo}
+                        alt={m.institution}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-lg font-bold text-foreground">{m.year}</span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    {m.score && (
+                      <span className="inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                        {m.score}
+                      </span>
+                    )}
+                    {m.status === "pursuing" ? (
+                      <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase px-2.5 py-0.5 rounded-full bg-accent/20 text-accent border border-accent/30 animate-pulse">
+                        <Star className="w-3 h-3" />
+                        Pursuing
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-green-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                        <CheckCircle2 className="w-3 h-3" />
+                        Completed
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="text-base font-semibold text-primary">{m.degree}</div>
